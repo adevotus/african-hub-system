@@ -147,7 +147,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="email" class="form-label text-capitalize"style="color: #000000" >First Name</label>
-                                            <input type="text" class="form-control  @error('email') is-invalid @enderror" id="" name="email" value="{{ old('email') }}" placeholder="Enter your First Name" autofocus/>
+                                            <input type="text" class="form-control  @error('firstName') is-invalid @enderror" id="" name="firstName" value="{{ old('email') }}" placeholder="Enter your First Name" autofocus/>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -158,7 +158,7 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="email" class="form-label text-capitalize"style="color: #000000" >Last Name</label>
-                                            <input type="text" class="form-control  @error('email') is-invalid @enderror" id="" name="email" value="{{ old('email') }}" placeholder="Enter your  Last Name" autofocus/>
+                                            <input type="text" class="form-control  @error('lastName') is-invalid @enderror" id="" name="lastName" value="{{ old('') }}" placeholder="Enter your  Last Name" autofocus/>
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -184,8 +184,8 @@
                                         <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                          <strong>{{ $message }}</strong>
+                                        </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@
                             <div class="divider my-2"><div class="divider-text">or</div></div>
 
                             <div class="d-flex justify-content-center">
-                                <button class="btn btn-danger btn-sm w-50" type="submit">Google</button>
+                                <a href="{{ route('auth.google') }}" class="btn btn-danger btn-sm w-50">Sign in with Google</a>
                             </div>
                         </div>
                     </div>
