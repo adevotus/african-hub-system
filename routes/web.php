@@ -53,4 +53,5 @@ Route::middleware(['auth', RoleMiddleware::class . ':student'])->group(function 
 
     Route::get('/student', [studentController::class, 'index'])->name('student-dashboard');
     Route::get('/user-profile', [studentController::class, 'profile'])->name('profile');
+    Route::get('/course-list',[studentController::class,'courseList'])->name('course-list');
 });

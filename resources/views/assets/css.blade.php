@@ -36,6 +36,8 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/css/toastr.min.css')}}">
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="{{asset('assets/vendor/css/dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/app-academy.css')}}"/>
+
 
     <!-- jQuery and DataTables JS -->
 

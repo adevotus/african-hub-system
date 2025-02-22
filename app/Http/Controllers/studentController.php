@@ -19,11 +19,11 @@ class studentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
-    {
-        //
+    public function courseList(){
+
+        return view('student.pages.courses_list');
     }
 
     /**

@@ -18,7 +18,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item active">
-            <a href="#" class="menu-link">
+            <a href="{{route('student-dashboard')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -52,7 +52,7 @@
             </ul>
         </li>
         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link">
+            <a href="{{route('course-list')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Authentications">Course Catalog</div>
             </a>

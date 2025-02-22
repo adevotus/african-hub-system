@@ -17,6 +17,7 @@
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/vendor/js/toastr.min.js')}}"></script>
 <script src="{{asset('assets/vendor/js/dataTables.min.js')}}"></script>
+<script src="{{asset('assets/vendor/js/app-academy-course.js')}}"></script>
 
 </body>
 </html>
