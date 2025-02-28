@@ -3,7 +3,7 @@ namespace App\Util;
 
 class StringUtil {
 
-    public static function generateRandomString($length = 10) {
+    public static function generateRandomString($length = 20) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';

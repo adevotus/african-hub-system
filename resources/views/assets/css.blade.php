@@ -42,5 +42,25 @@
     <!-- jQuery and DataTables JS -->
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        /* Loader Styles */
+        #loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
 
 </head>

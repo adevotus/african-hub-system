@@ -13,7 +13,7 @@ class SuperController extends Controller
      */
     public function index()
     {
-        return ('this is super index');
+        return view ('super.dashboard');
     }
 
     /**

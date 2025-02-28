@@ -62,6 +62,13 @@
                         </div>
                         <div class="col-md-6">
                              <h4 class="text-bold text-center m-2 mt-4" style="color: #000000;  font-family: 'Poppins', sans-serif; font-weight: bold;">Log In</h4>
+
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    You have successfully activated your account. Please login to continue.
+                                </div>
+                            @endif
+
                             <form id="" class="mb-3 mt-4" action="{{route('login')}}" method="POST">
                                 @csrf
                                 <div class="mb-3">
@@ -91,8 +98,8 @@
                                         <input class="form-check-input" type="checkbox" id="remember-me" />
                                         <label class="form-check-label text-small" for="remember-me" style="color: #000000"> Remember Me </label>
                                     </div>
-                                    @if (Route::has('password.request'))
-                                        <a href="{{ route('password.request') }}">
+                                    @if (Route::has('password-reset'))
+                                        <a href="{{ route('password-reset') }}">
                                             <small> {{ __('Forgot Your Password?') }}</small>
                                         </a>
                                     @endif
@@ -120,15 +127,27 @@
             </div>
 
             <p style="font-size: small;color:#000c3f;" class="text-center mt-3">Copyright &copy;<script>document.write(new Date().getFullYear());</script> | African Hub</p>
-
         </div>
-
     </div>
-
 </div>
 
 <!-- / Content -->
 
-
 @include('assets.js')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toastr options
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "timeOut": 5000, // 5 seconds
+        };
+
+        // Check if there's a toast message in the session
+        @if (session('status'))
+        toastr.success("{{ session('status') }}");
+        @endif
+    });
+</script>
 

@@ -94,7 +94,7 @@
                                     <div class="col-sm-6 col-lg-4">
                                         <div class="card p-2 h-100 shadow-none border">
                                             <div class="rounded-2 text-center mb-4">
-                                                <a href="app-academy-course-details.html"><img class="img-fluid" src="../../assets/img/pages/app-academy-tutor-2.png" alt="tutor image 2" /></a>
+                                                <a href="#"><img class="img-fluid" src="../../assets/img/pages/app-academy-tutor-2.png" alt="tutor image 2" /></a>
                                             </div>
                                             <div class="card-body p-4 pt-2">
                                                 <div class="d-flex justify-content-between align-items-center mb-4 pe-xl-4 pe-xxl-0">
@@ -103,7 +103,7 @@
                                                         4.2 <span class="text-warning"><i class="icon-base bx bxs-star me-1 mb-1_5"></i></span><span class="fw-normal"> (424)</span>
                                                     </p>
                                                 </div>
-                                                <a class="h5" href="app-academy-course-details.html">Figma & More</a>
+                                                <a class="h5" href="#">Figma & More</a>
                                                 <p class="mt-1">Introductory course for design and framework basics in web development.</p>
                                                 <p class="d-flex align-items-center mb-1"><i class="icon-base bx bx-time-five me-1"></i>16 hours</p>
                                                 <div class="progress mb-4" style="height: 8px">

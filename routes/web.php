@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\studentController;
@@ -22,15 +24,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
-
+Route::get('/register-verify', [RegisterController::class, 'showVerificationForm'])->name('register-verify');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-
+Route::get('/password-reset',[ForgotPasswordController::class,'resetForm'])->name('password-reset');
+Route::post('/password-reset',[ForgotPasswordController::class,'sendResetLinkEmail'])->name('password-reset-link');
 
 Route::get('/', function () {return view('auth.login');});
 Route::get('/services', function () {return view('services');});
 Route::get('/about', function () {return view('about');});
+
+Auth::routes(['verify' => true]);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/email/verify', [EmailVerificationController::class, 'showVerificationNotice'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
+    Route::post('/email/resend', [EmailVerificationController::class, 'resendVerificationEmail'])->middleware(['throttle:6,1'])->name('verification.resend');
+});
 
 Auth::routes();
 
