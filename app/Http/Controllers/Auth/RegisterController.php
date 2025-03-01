@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Service\SubscriptionService;
 use App\Util;
 use App\Util\StringUtil;
 use Illuminate\Http\Request;
@@ -37,15 +38,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/login';
+    protected $subscriptionService;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SubscriptionService $subscriptionService)
     {
         $this->middleware('guest');
+        $this->subscriptionService = $subscriptionService;
     }
 
     /**
@@ -82,25 +85,19 @@ class RegisterController extends Controller
         ]);
 
         event(new Registered($user));
-         Log::info('Registered event fired for: ' . $user->email);
-//        $user->sendEmailVerificationNotification();
+        Log::info('Registered event fired for: ' . $user->email);
 
-           return $user;
+        // Pass the created user to subscriptionService->save()
+        $this->subscriptionService->save($user);
+
+        return $user;
     }
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
         $user = $this->create($request->all());
-
-        // Do not log in the user after registration
-        // $this->guard()->login($user);
-
-        session([
-            'user_details' => $user,
-            'message' => 'A verification link has been sent to your email. Please verify your email to activate your account.'
-        ]);
-
+        session(['user_details' => $user, 'message' => 'A verification link has been sent to your email. Please verify your email to activate your account.']);
         return redirect('/register-verify');
     }
     public function showVerificationForm()

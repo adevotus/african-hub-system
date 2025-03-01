@@ -136,12 +136,13 @@
 @include('assets.js')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+
         // Toastr options
         toastr.options = {
             "closeButton": true,
             "progressBar": true,
             "positionClass": "toast-top-right",
-            "timeOut": 5000, // 5 seconds
+            "timeOut": 10000,
         };
 
         // Check if there's a toast message in the session
@@ -149,5 +150,9 @@
         toastr.success("{{ session('status') }}");
         @endif
     });
+
+    @if(session('error'))
+    toastr.error("{{ session('error') }}");
+    @endif
 </script>
 

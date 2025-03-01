@@ -14,7 +14,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
+
+        if (!$request->expectsJson()) {
+            // Check if the user is unauthorized due to max devices
+            if (session('error') === 'You have reached the maximum allowed devices. Remove an old device to log in.') {
+                return route('unauthorize');
+            }
+
+            // Default redirection to login page
             return route('login');
         }
     }

@@ -24,12 +24,8 @@ class EmailVerificationController extends Controller
     public function verify(EmailVerificationRequest $request)
     {
         $user = $request->user();
-
-        // Manually update the email_verified_at column
         $user->email_verified_at = now();
         $user->save();
-        //dd($user);
-        // Optionally, fire the Verified event
         event(new Verified($user));
 
         return redirect('/login')->with('status', 'Your account has been activated! Please login to continue.');

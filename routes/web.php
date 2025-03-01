@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\SuperController;
+use App\Http\Controllers\TemplateControler;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,9 @@ Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name(
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('/password-reset',[ForgotPasswordController::class,'resetForm'])->name('password-reset');
 Route::post('/password-reset',[ForgotPasswordController::class,'sendResetLinkEmail'])->name('password-reset-link');
+
+Route::get('/unauthorize-401',[TemplateControler::class,'unauthorize'])->name('unauthorize');
+
 
 Route::get('/', function () {return view('auth.login');});
 Route::get('/services', function () {return view('services');});

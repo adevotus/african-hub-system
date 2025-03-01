@@ -15,6 +15,12 @@ class Status
     public const PROCESSING = 'PROCESSING';
     public const ACCEPTED = 'ACCEPTED';
     public const REJECTED = 'REJECTED';
+    public const SUBSCRIBED = 'SUBSCRIBED';
+    public const UNSUBSCRIBED = 'UNSUBSCRIBED';
+    public const VERIFIED = 'VERIFIED';
+    public const NOT_PAID = 'NOT PAID';
+    public const  NOTIFIED = 'NOTIFIED';
+    public const  NON_NOTIFIED = 'NON NOTIFIED';
 
     /**
      * Get all possible statuses.
@@ -33,7 +39,13 @@ class Status
             self::PROCESSING,
             self::ACCEPTED,
             self::FAILED,
-            self::REJECTED
+            self::REJECTED,
+            self::SUBSCRIBED,
+            self::UNSUBSCRIBED,
+            self::VERIFIED,
+            self::NOT_PAID,
+            self::NOTIFIED,
+            self::NON_NOTIFIED,
 
         ];
     }
