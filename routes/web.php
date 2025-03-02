@@ -39,7 +39,6 @@ Route::post('/password-reset-submit/{token}',[ForgotPasswordController::class,'r
 Route::get('/unauthorize-401',[TemplateControler::class,'unauthorize'])->name('unauthorize');
 
 
-
 Route::get('/', function () {return view('auth.login');});
 Route::get('/services', function () {return view('services');});
 Route::get('/about', function () {return view('about');});
@@ -68,6 +67,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin'])->group(function ()
 
     Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
     Route::get('/user-profile', [AdminController::class, 'profile'])->name('profile');
+
 });
 
 Route::middleware(['auth', RoleMiddleware::class . ':student'])->group(function () {
