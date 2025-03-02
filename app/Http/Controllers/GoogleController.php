@@ -27,6 +27,10 @@ class GoogleController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
+            if (!$googleUser || !$googleUser->getEmail() || !$googleUser->getName()) {
+                return redirect()->route('login')->with('error', 'Google login failed. Missing required data.');
+            }
+
             // Check if user exists
             $user = User::where('email', $googleUser->getEmail())->first();
 

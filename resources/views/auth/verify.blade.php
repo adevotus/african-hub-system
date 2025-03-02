@@ -20,7 +20,7 @@
                     <p class="text-start mb-0 mt-3" style="color: #0c0c0c"> Account activation link sent to your email address <b>{{ session('user_details')->email }}</b>
                         Please follow the link inside to continue.
                     </p>
-                    <p class="text-start mb-0 mt-4">Didn't get the mail? <a href="javascript:void(0);">Resend</a></p>
+                    <p class="text-center mb-0 mt-4">Didn't get the mail? <a href="{{route('verification.resend')}}">Resend</a></p>
                 </div>
             </div>
             <!-- /Verify Email -->

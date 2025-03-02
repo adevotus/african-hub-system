@@ -38,6 +38,26 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/css/dataTables.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendor/css/pages/app-academy.css')}}"/>
 
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css" />
+
+
+
+
+
+
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/page-misc.css" />
+
+    <!-- Helpers -->
+    <script src="../../assets/vendor/js/helpers.js"></script>
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+
+    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+    <script src="../../assets/vendor/js/template-customizer.js"></script>
+
+
 
     <!-- jQuery and DataTables JS -->
 

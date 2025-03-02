@@ -132,7 +132,7 @@
                             </div>
 
                             <div class="d-flex justify-content-center">
-                                <a href="{{ route('auth.google') }}" class="btn btn-danger btn-sm w-50">Sign in with Google</a>
+                                <a href="{{ route('auth.google') }}" class="btn btn-danger btn-sm w-50">Sign up with Google</a>
                             </div>
                         </div>
                     </div>

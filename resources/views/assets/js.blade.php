@@ -19,5 +19,17 @@
 <script src="{{asset('assets/vendor/js/dataTables.min.js')}}"></script>
 <script src="{{asset('assets/vendor/js/app-academy-course.js')}}"></script>
 
+
+
+<script src="../../assets/vendor/libs/@algolia/autocomplete-js.js"></script>
+
+<script src="../../assets/vendor/libs/pickr/pickr.js"></script>
+
+
+
+<script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+
+<script src="../../assets/vendor/libs/i18n/i18n.js"></script>
+
 </body>
 </html>

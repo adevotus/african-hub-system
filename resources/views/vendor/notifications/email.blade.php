@@ -93,7 +93,7 @@
     <!-- Logo -->
     <img src="https://africanhub.netlify.app/assets/img/logo/logd-01.png" alt="Company Logo" class="logo" width="120" height="auto">
 
-    <h1 style="text-align: center; font-weight: 800">Verify Your Email Address</h1>
+    <h1 style="text-align: center; font-weight: 800">AfricanHub Verify Your Email Address</h1>
 
     <p style="text-align: center">Thank you for signing up with <span class="highlight">{{ config('app.name') }}</span>. To complete your registration, please verify your email address by clicking the button below:</p>
 

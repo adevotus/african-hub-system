@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\studentController;
 use App\Http\Controllers\SuperController;
@@ -29,10 +30,14 @@ Route::get('/register-verify', [RegisterController::class, 'showVerificationForm
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
 Route::get('/password-reset',[ForgotPasswordController::class,'resetForm'])->name('password-reset');
-Route::post('/password-reset',[ForgotPasswordController::class,'sendResetLinkEmail'])->name('password-reset-link');
+Route::post('/password-reset-send-email',[ForgotPasswordController::class,'sendResetEmail'])->name('password-reset-link');
+Route::get('/password-reset/{token}',[ForgotPasswordController::class,'resetPasswordForm'])->name('password-reset-form');
+Route::post('/password-reset-submit/{token}',[ForgotPasswordController::class,'resetPasswordSubmit'])->name('password-reset-submit');
 
 Route::get('/unauthorize-401',[TemplateControler::class,'unauthorize'])->name('unauthorize');
+
 
 
 Route::get('/', function () {return view('auth.login');});
@@ -46,6 +51,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->middleware(['signed'])->name('verification.verify');
     Route::post('/email/resend', [EmailVerificationController::class, 'resendVerificationEmail'])->middleware(['throttle:6,1'])->name('verification.resend');
 });
+
 
 Auth::routes();
 

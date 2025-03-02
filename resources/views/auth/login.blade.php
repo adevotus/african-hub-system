@@ -135,6 +135,10 @@
 
 @include('assets.js')
 <script>
+
+</script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
 
         // Toastr options
@@ -148,6 +152,12 @@
         // Check if there's a toast message in the session
         @if (session('status'))
         toastr.success("{{ session('status') }}");
+        @endif
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        @if (session('success'))
+        toastr.success("{{ session('success') }}");
         @endif
     });
 

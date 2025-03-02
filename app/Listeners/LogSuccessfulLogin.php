@@ -52,20 +52,13 @@ class LogSuccessfulLogin
             session()->invalidate();
             session()->regenerateToken();
 
-//             dd(redirect('/unauthorize-401'));
+            session()->flash('max_devices_error', 'You have reached the maximum allowed devices. Remove an old device to log in.');
 
-            return redirect()->route('unauthorize', ['error' => 'You have reached the maximum allowed devices. Remove an old device to log in.']);
+            return redirect()->route('unauthorize');
 
-//            return redirect('/unauthorize-401')->with('error', 'You have reached the maximum allowed devices. Remove an old device to log in.');
+
         }
     }
 
 }
 
-//            abort(403, "You have reached the maximum allowed devices. Remove an old device to log in.");
-
-//            Log::warning("Blocked login for user {$user->email} from IP: {$ip}");
-
-//            session()->flash('error', '⚠️ Login denied! You have reached the maximum allowed IP addresses. Contact the admin.');
-
-//            return redirect()->route('login');

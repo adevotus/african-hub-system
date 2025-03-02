@@ -60,12 +60,12 @@
                         </div>
                         <div class="col-md-6">
                             <h4 class="text-bold text-center m-2 mt-4" style="color: #000000;  font-family: 'Poppins', sans-serif; font-weight: bold;">Reset Your Password</h4>
-                            <form id="" class="mb-3 mt-4" action="{{route('password-reset-link')}}" method="POST">
+                            <form id="resetPasswordForm" class="mb-3 mt-4" action="{{ route('password-reset-submit', ['token' => $token]) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="email" class="form-label text-capitalize"style="color: #000000" >Your Email</label>
-                                    <input type="text" class="form-control  @error('email') is-invalid @enderror" id="" name="email" value="{{ old('email') }}" placeholder="Enter correct email" autofocus/>
-                                    @error('email')
+                                    <label for="password" class="form-label text-capitalize" style="color: #000000">Your Password</label>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ old('password') }}" placeholder="Enter your new password" autofocus />
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -73,7 +73,19 @@
                                 </div>
 
                                 <div class="mb-3">
-                                    <button class="btn btn-primary d-grid w-100" type="submit">Send Reset Link</button>
+                                    <label for="confirm_password" class="form-label text-capitalize" style="color: #000000">Confirm Password</label>
+                                    <input type="password" class="form-control @error('confirm_password') is-invalid @enderror" id="confirm_password" name="confirm_password" value="{{ old('confirm_password') }}" placeholder="Confirm your new password" autofocus />
+                                    @error('confirm_password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div id="passwordError" class="text-danger mb-3" style="display: none;">Passwords do not match!</div>
+
+                                <div class="mb-3">
+                                    <button id="submitButton" class="btn btn-primary d-grid w-100" type="submit" disabled>Send Reset</button>
                                 </div>
                             </form>
 
@@ -86,7 +98,6 @@
 
                             <div class="d-flex justify-content-center">
                                 <small>For additional help, contact AfricaHub support at info@africanhub</small>
-{{--                                <button class="btn btn-danger btn-sm w-50" type="submit">Google</button>--}}
                             </div>
                         </div>
                     </div>
@@ -106,5 +117,26 @@
 
 
 @include('assets.js')
+<script>
+    // Get the password and confirm password fields
+    const passwordField = document.getElementById('password');
+    const confirmPasswordField = document.getElementById('confirm_password');
+    const submitButton = document.getElementById('submitButton');
+    const passwordError = document.getElementById('passwordError');
+
+    // Function to check if passwords match
+    function checkPasswordMatch() {
+        if (passwordField.value !== confirmPasswordField.value) {
+            passwordError.style.display = 'block';  // Show error
+            submitButton.disabled = true;  // Disable submit button
+        } else {
+            passwordError.style.display = 'none';
+            submitButton.disabled = false;
+        }
+    }
+
+    passwordField.addEventListener('input', checkPasswordMatch);
+    confirmPasswordField.addEventListener('input', checkPasswordMatch);
+</script>
 
 
